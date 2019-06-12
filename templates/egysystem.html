@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Contact V11</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->
+	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+  <!--===============================================================================================-->
+  	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/radio-image.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="css/util.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+<!--===============================================================================================-->
+</head>
+<body>
+
+
+	<div class="container-contact100" style="background-image: url('images/bg-01.jpg');">
+		<div class="wrap-contact100">
+			<form class="contact100-form validate-form" action = "/" method = "POST">
+				<span class="contact100-form-title">
+					Egy System
+				</span>
+
+        <!-- Hussein Edits -->
+				<div class="container-fluid" style="min-height:100%">
+			  {% with messages = get_flashed_messages() %}
+			    {% if messages %}
+			      {% for message in messages %}
+			      <div class="alert alert-warning alert-dismissible" role="alert">
+			        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			          <span aria-hidden="true">&times;</span>
+			        </button>
+			        {{message}}
+			      </div>
+			      {% endfor %}
+			    {% endif %}
+			  {% endwith %}
+				</div>
+        <div class="wrap-input100">
+					<span class="label-input100">Company Name: </span>
+					<input class="input100" type="Text" name="company_name" style="width:150px">
+				</div>
+        <div class="wrap-input100">
+					<span class="label-input100">Type of Industry: </span>
+					<input class="input100" type="Text" name="industry_type" style="width:150px">
+				</div>
+
+				<div class="wrap-input100 rs1-wrap-input100 validate-input" data-validate="Name is required">
+					<span class="label-input100">1- Required System?</span><br/>
+					<input  type="radio" name="req_sys" value="rfid" id="req-sys"> RFID
+					<input  type="radio" name="req_sys" value="iot" id="req-sys" disabled> IOT
+				</div>
+
+        <br/>
+        <div class="wrap-input100">
+					<span class="label-input100">2- Warehouse Shape:</span><br/>
+					<div class="row">
+          <input  type="radio" name="warehouse_shape" value="wh1" checked="checked"><img src="images/wh1.png">
+					<input  type="radio" name="warehouse_shape" value="wh2"><img src="images/wh2.png">
+					</div>
+					<div class="row">
+          <input  type="radio" name="warehouse_shape" value="wh3"><img src="images/wh3.png">
+          <input  type="radio" name="warehouse_shape" value="wh4"><img src="images/wh4.png">
+					</div>
+				</div>
+
+
+				<br/>
+				<div class="wrap-input100">
+					<span class="label-input100">3- Dimensions of warehouse:</span><br/>
+					<table>
+					<tr>
+					<td><input class="input100" type="number" min="1" name="dimension_length" placeholder="Width" style="width:150px"></td>
+					<td><input class="input100" type="number" min="1" name="dimension_width" placeholder="Length" style="width:150px"></td>
+					</tr>
+					</table>
+				</div>
+
+        <br/>
+				<div class="wrap-input100">
+					<span class="label-input100">4- Size of Staging Area:</span><br/>
+					<table>
+					<tr>
+					<td><input class="input100" type="number" min="1" name="size_staging" placeholder="m2" style="width:150px"></td>
+					</tr>
+					</table>
+				</div>
+
+        <br/>
+				<div class="wrap-input100">
+					<span class="label-input100">5- The  Size of Storage Area:</span><br/>
+					<table>
+					<tr>
+					<td><input class="input100" type="number" min="1" name="size_storage" placeholder="m2" style="width:150px"></td>
+					</tr>
+					</table>
+				</div>
+
+        <br/>
+        <div class="wrap-input100">
+					<span class="label-input100">6- Products Types:</span><br/>
+          <input  type="radio" name="product_type" value="type1"><img src="images/">
+					<input  type="radio" name="product_type" value="type2"><img src="images/">
+          <input  type="radio" name="product_type" value="type3"><img src="images/">
+          <input  type="radio" name="product_type" value="type4"><img src="images/">
+				</div>
+
+        <br/>
+        <div class="wrap-input100">
+					<span class="label-input100">7- Products received on:</span><br/>
+          <input  type="radio" name="receive" value="pallets"> Pallets
+					<input  type="radio" name="receive" value="cartons"> Cartons
+				</div>
+
+        <div class="wrap-input100">
+					<span class="label-input100">8- Types of activates occurs in warehouse:</span><br/>
+          <input  type="radio" name="activity" value="receiving"> Receiving
+          <input  type="radio" name="activity" value="put_away"> Put-away
+          <input  type="radio" name="activity" value="picking"> Picking
+          <input  type="radio" name="activity" value="packing"> Packing
+          <input  type="radio" name="activity" value="dispatching"> Dispatching
+          <input  type="radio" name="activity" value="returns"> Returns
+          <input  type="radio" name="activity" value="value_added_activity"> Value added activity
+				</div>
+
+
+        <br/>
+				<div class="wrap-input100">
+					<span class="label-input100">9- Number of working shifts per day:</span><br/>
+					<table>
+					<tr>
+					<td><input class="input100" type="number" min="1" name="shifts" placeholder="" style="width:150px"></td>
+					</tr>
+					</table>
+				</div>
+
+        <br/>
+				<div class="wrap-input100">
+					<span class="label-input100">10- Contact Information:</span><br/>
+					<table>
+					<tr>
+					<td><input class="input100" type="text" name="contact_name" placeholder="Name" style="height:100px width:200px"></td>
+					</tr>
+          <tr>
+					<td><input class="input100" type="text" name="contact_email" placeholder="Email" style="height:100px width:200px"></td>
+					</tr>
+          <tr>
+					<td><input class="input100" type="text" name="contact_phone" placeholder="Phone" style="height:100px width:200px"></td>
+					</tr>
+					</table>
+				</div>
+
+				<div class="container-contact100-form-btn">
+					<div class="wrap-contact100-form-btn">
+						<div class="contact100-form-bgbtn"></div>
+						<input type="submit" value="Submit">
+					</div>
+				</div>
+			</form>
+		</div>
+
+
+	</div>
+
+
+<!--===============================================================================================-->
+	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/bootstrap/js/popper.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script src="js/main.js"></script>
+
+</body>
+</html>
