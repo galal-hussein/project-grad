@@ -28,12 +28,71 @@
 	<link rel="stylesheet" type="text/css" href="css/util.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 <!--===============================================================================================-->
+<script>
+var myVar;
+
+function myFunction() {
+myVar = setTimeout(showPage, 3000);
+}
+
+function showPage() {
+document.getElementById("loader").style.display = "none";
+document.getElementById("myDiv").style.display = "block";
+}
+</script>
 </head>
-<body>
+<body onload="myFunction()" style="margin:0;">
+	<div id="loader">
+		<!-- <div class="wrap-contact100">
+			<form class="contact100-form validate-form">
+				<span class="contact100-form-title">
+			Loading....
+		</span>
+		</form>
+		</div> -->
+	</div>
 	<div class="container-contact100" style="background-image: url('images/bg2.jpg');">
 
-		<div class="wrap-contact100">
-			<form class="contact100-form validate-form">
+		<div class="container-fluid" style="min-height:100%">
+		{% with messages = get_flashed_messages() %}
+			{% if messages %}
+				{% for message in messages %}
+				<div class="alert alert-warning alert-dismissible" role="alert">
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					{{message}}
+				</div>
+				{% endfor %}
+			{% endif %}
+		{% endwith %}
+		</div>
+
+		<div style="display:none;" id="myDiv" class="animate-bottom wrap-contact100">
+			<form class="contact100-form validate-form" action="/report" method="post">
+
+				<input type="hidden" name="space" value="{{results['space']}}"></td>
+				<td><input type="hidden" name="trucks" value="{{results['trucks']}}"></td>
+				<td><input type="hidden" name="trucks_readers" value="{{results['trucks_readers']}}"></td>
+				<td><input type="hidden" name="trucks_readers_cost" value="{{results['trucks_readers_cost']}}"></td>
+				<td><input type="hidden" name="handhelds" value="{{results['handhelds']}}"></td>
+				<td><input type="hidden" name="handheld_cost" value="{{results['handheld_cost']}}"></td>
+				<td><input type="hidden" name="workers" value="{{results['workers']}}"></td>
+				<td><input type="hidden" name="cartons" value="{{results['cartons']}}"></td>
+				<td><input type="hidden" name="pallets" value="{{results['pallets']}}"></td>
+				<td><input type="hidden" name="gate_readers" value="{{results['gate_readers']}}"></td>
+				<td><input type="hidden" name="gate_readers_cost" value="{{results['gate_readers_cost']}}"></td>
+				<td><input type="hidden" name="printers" value="{{results['printers']}}"></td>
+				<td><input type="hidden" name="printers_cost" value="{{results['printers_cost']}}"></td>
+				<td><input type="hidden" name="wh_sys" value="{{results['wh_sys']}}"></td>
+				<td><input type="hidden" name="company_name" value="{{results['company_name']}}"></td>
+				<td><input type="hidden" name="industry_type" value="{{results['industry_type']}}"></td>
+				<td><input type="hidden" name="contact_name" value="{{results['contact_name']}}"></td>
+				<td><input type="hidden" name="contact_email" value="{{results['contact_email']}}"></td>
+				<td><input type="hidden" name="contact_phone" value="{{results['contact_phone']}}"></td>
+				<td><input type="hidden" name="total_cost" value="{{total_cost}}"></td>
+				<td><input type="hidden" name="shape" value="{{results['shape']}}"></td>
+
 				<span class="contact100-form-title">
 					<IMG SRC="images/logo.png" ALT="some text" WIDTH=170 HEIGHT=130>
 				</span>
@@ -47,11 +106,19 @@
 				  <thead>
 				    <tr>
 				      <th scope="col">TOTAL COST</th>
-				      <td>{{total_cost}}</td>
+				      <td>{{total_cost}} USD</td>
 				    </tr>
 				  </thead>
 				</table>
 			</span>
+			<div class="container-contact100-form-btn">
+				<button class="contact100-form-btn">
+					<span>
+						Show Full Report
+						<i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
+					</span>
+				</button>
+			</div>
 	<div class="container-contact100-form-btn">
 		<input class="contact100-form-btn" type="button" value="Back" onclick="history.back()">
 			<span>
