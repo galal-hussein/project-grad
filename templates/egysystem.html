@@ -1,25 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Contact V11</title>
+	<title>Home</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->
 	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
-  <!--===============================================================================================-->
-  	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/radio-image.css">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+	<link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
 <!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
+<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/noui/nouislider.min.css">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="css/util.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
@@ -28,11 +32,11 @@
 <body>
 
 
-	<div class="container-contact100" style="background-image: url('images/bg-01.jpg');">
+	<div class="container-contact100" style="background-image: url('images/bg2.jpg');">
 		<div class="wrap-contact100">
 			<form class="contact100-form validate-form" action = "/" method = "POST">
 				<span class="contact100-form-title">
-					Egy System
+					<IMG SRC="images/logo.png" ALT="some text" WIDTH=170 HEIGHT=130>
 				</span>
 
         <!-- Hussein Edits -->
@@ -50,42 +54,61 @@
 			    {% endif %}
 			  {% endwith %}
 				</div>
-        <div class="wrap-input100">
-					<span class="label-input100">Company Name: </span>
-					<input class="input100" type="Text" name="company_name" style="width:150px">
+
+				<div class="wrap-input100 validate-input bg1" data-validate="Please Type Your Name">
+					<span class="label-input100">Company Name *</span>
+					<input value="{{form['company_name']}}" class="input100" type="text" name="company_name" placeholder="Enter Your Company Name">
 				</div>
-        <div class="wrap-input100">
-					<span class="label-input100">Type of Industry: </span>
-					<input class="input100" type="Text" name="industry_type" style="width:150px">
+				<div class="wrap-input100 validate-input bg1" data-validate="Please Type Your Name">
+					<span class="label-input100">Type of Industry *</span>
+					<input value="{{form['industry_type']}}" class="input100" type="text" name="industry_type" placeholder="Enter Your Type Of Industry">
 				</div>
 
-				<div class="wrap-input100 rs1-wrap-input100 validate-input" data-validate="Name is required">
-					<span class="label-input100">1- Required System?</span><br/>
-					<input  type="radio" name="req_sys" value="rfid" id="req-sys"> RFID
-					<input  type="radio" name="req_sys" value="iot" id="req-sys" disabled> IOT
+				<div class="wrap-input100 rs1-wrap-input100 validate-input wrap-contact100-form-radio" data-validate="Name is required">
+					<span class="label-input100"> 1- Required System?</span><br/>
+					<div class="contact100-form-radio m-t-15">
+					<input class="input-radio100" id="req_sys" type="radio" name="req_sys" value="rfid" {% if form['req_sys'] == 'rfid' %}checked="checked"{%endif%}>
+					<label class="label-radio100" for="req_sys">
+						RFID
+					</label>
+				</div>
+				<div class="contact100-form-radio">
+					<input class="input-radio100" id="req_sys" type="radio" name="req_sys" value="iot" disabled>
+					<label class="label-radio100" for="req_sys">
+						IOT
+					</label>
+				</div>
 				</div>
 
         <br/>
-        <div class="wrap-input100">
-					<span class="label-input100">2- Warehouse Shape:</span><br/>
-					<div class="row">
-          <input  type="radio" name="warehouse_shape" value="wh1" checked="checked"><img src="images/wh1.png">
-					<input  type="radio" name="warehouse_shape" value="wh2"><img src="images/wh2.png">
-					</div>
-					<div class="row">
-          <input  type="radio" name="warehouse_shape" value="wh3"><img src="images/wh3.png">
-          <input  type="radio" name="warehouse_shape" value="wh4"><img src="images/wh4.png">
-					</div>
-				</div>
 
+					<div class="wrap-input100 wrap-contact100-form-radio validate-input" data-validate="Please Choose Warehouse Shape">
+							<span class="label-input100">2- Warehouse Shape:</span>
+							<input class="input-radio100" id="warehouse_shape" type="radio" name="warehouse_shape" value="wh1" {% if form['warehouse_shape'] == 'wh1' %}checked="checked"{%endif%}>
+							<label class="label-radio100" for="warehouse_shape">
+								<img src="images/wh1.png">
+							</label>
+							<input class="input-radio100" id="warehouse_shape2" type="radio" name="warehouse_shape" value="wh2" {% if form['warehouse_shape'] == 'wh2' %}checked="checked"{%endif%}>
+							<label class="label-radio100" for="warehouse_shape2">
+								<img src="images/wh2.png">
+							</label>
+							<input class="input-radio100" id="warehouse_shape3" type="radio" name="warehouse_shape" value="wh3" {% if form['warehouse_shape'] == 'wh3' %}checked="checked"{%endif%}>
+							<label class="label-radio100" for="warehouse_shape3">
+								<img src="images/wh3.png">
+							</label>
+							<input class="input-radio100" id="warehouse_shape4" type="radio" name="warehouse_shape" value="wh4" {% if form['warehouse_shape'] == 'wh4' %}checked="checked"{%endif%}>
+							<label class="label-radio100" for="warehouse_shape4">
+								<img src="images/wh4.png">
+							</label>
+				</div>
 
 				<br/>
 				<div class="wrap-input100">
 					<span class="label-input100">3- Dimensions of warehouse:</span><br/>
 					<table>
 					<tr>
-					<td><input class="input100" type="number" min="1" name="dimension_length" placeholder="Width" style="width:150px"></td>
-					<td><input class="input100" type="number" min="1" name="dimension_width" placeholder="Length" style="width:150px"></td>
+					<td><input value="{{form['dimension_length']}}" class="input100" type="number" min="1" name="dimension_length" placeholder="Width" style="width:150px"></td>
+					<td><input value="{{form['dimension_width']}}" class="input100" type="number" min="1" name="dimension_width" placeholder="Length" style="width:150px"></td>
 					</tr>
 					</table>
 				</div>
@@ -95,7 +118,7 @@
 					<span class="label-input100">4- Size of Staging Area:</span><br/>
 					<table>
 					<tr>
-					<td><input class="input100" type="number" min="1" name="size_staging" placeholder="m2" style="width:150px"></td>
+					<td><input value="{{form['size_staging']}}" class="input100" type="number" min="1" name="size_staging" placeholder="m2" style="width:150px"></td>
 					</tr>
 					</table>
 				</div>
@@ -105,70 +128,144 @@
 					<span class="label-input100">5- The  Size of Storage Area:</span><br/>
 					<table>
 					<tr>
-					<td><input class="input100" type="number" min="1" name="size_storage" placeholder="m2" style="width:150px"></td>
+					<td><input value="{{form['size_storage']}}" class="input100" type="number" min="1" name="size_storage" placeholder="m2" style="width:150px"></td>
 					</tr>
 					</table>
 				</div>
-
-        <br/>
         <div class="wrap-input100">
 					<span class="label-input100">6- Products Types:</span><br/>
-          <input  type="radio" name="product_type" value="type1"><img src="images/">
-					<input  type="radio" name="product_type" value="type2"><img src="images/">
-          <input  type="radio" name="product_type" value="type3"><img src="images/">
-          <input  type="radio" name="product_type" value="type4"><img src="images/">
+					<div class="contact100-form-radio m-t-15">
+					<input type="checkbox" id="fmcgs" name="product_type" value="fmcgs" {% if "fmcgs" in form['product_type'] %}checked{%endif%}>
+					<label class="label-input100" for="fmcgs">
+						FMCGS
+					</label>
+					</div>
+					<div class="contact100-form-radio">
+					<input type="checkbox" id="pharma" name="product_type" value="pharma">
+					<label class="label-input100" for="pharma">
+						Pharmatutical
+					</label>
 				</div>
+				<div class="contact100-form-radio">
+					<input type="checkbox" id="elec_products" name="product_type" value="elec_products">
+					<label class="label-input100" for="elec_products">
+						Elecrtonics
+					</label>
+				</div>
+				<div class="contact100-form-radio">
+					<input type="checkbox" id="industrial_products" name="product_type" value="industrial_products">
+					<label class="label-input100" for="industrial_products">
+						Industrial products
+					</label>
+				</div>
+					<div class="contact100-form-radio">
+					<input type="checkbox" id="clothes" name="product_type" value="clothes">
+					<label class="label-input100" for="clothes">
+						Clothes
+					</label>
+				</div>
+				<div class="contact100-form-radio">
+					<input type="checkbox" id="product_type" name="product_type" value="chemical_products">
+					<label class="label-input100" for="product_type">
+						Chemical products
+					</label>
+				</div>
+			</div>
 
         <br/>
-        <div class="wrap-input100">
-					<span class="label-input100">7- Products received on:</span><br/>
-          <input  type="radio" name="receive" value="pallets"> Pallets
-					<input  type="radio" name="receive" value="cartons"> Cartons
-				</div>
 
-        <div class="wrap-input100">
-					<span class="label-input100">8- Types of activates occurs in warehouse:</span><br/>
-          <input  type="radio" name="activity" value="receiving"> Receiving
-          <input  type="radio" name="activity" value="put_away"> Put-away
-          <input  type="radio" name="activity" value="picking"> Picking
-          <input  type="radio" name="activity" value="packing"> Packing
-          <input  type="radio" name="activity" value="dispatching"> Dispatching
-          <input  type="radio" name="activity" value="returns"> Returns
-          <input  type="radio" name="activity" value="value_added_activity"> Value added activity
-				</div>
+				<div class="wrap-input100 wrap-contact100-form-radio m-t-15" data-validate="Name is required">
+						<span class="label-input100">7- Products received on:</span>
+					<div class="contact100-form-radio m-t-15">
+						<input class="input-radio100" id="pallets" type="radio" name="receive" value="pallets" {% if "pallets" in form['receive'] %}checked="checked"{%endif%}>
+						<label class="label-radio100" for="pallets">
+						Pallets
+						</label>
+					</div>
+					<div class="contact100-form-radio m-t-15">
+						<input class="input-radio100" id="cartons" type="radio" name="receive" value="cartons" {% if "cartons" in form['receive'] %}checked="checked"{%endif%}>
+						<label class="label-radio100" for="cartons">
+							Cartons
+						</label>
+					</div>
+			</div>
 
 
-        <br/>
+
+			<div class="wrap-input100">
+				<span class="label-input100">6- Products Types:</span><br/>
+			<div class="contact100-form-radio m-t-15">
+				<input type="checkbox" id="receiving" name="activity_type" value="receiving">
+				<label class="label-input100" for="receiving">
+					Receiving
+				</label>
+			</div>
+			<div class="contact100-form-radio">
+				<input type="checkbox" id="put_away" name="activity_type" value="put_away">
+				<label class="label-input100" for="put_away">
+					Put-Away
+				</label>
+			</div>
+			<div class="contact100-form-radio">
+				<input type="checkbox" id="picking" name="activity_type" value="picking">
+				<label class="label-input100" for="picking">
+					Picking
+				</label>
+			</div>
+			<div class="contact100-form-radio">
+				<input type="checkbox" id="packing" name="activity_type" value="packing">
+				<label class="label-input100" for="packing">
+					Packing
+				</label>
+			</div>
+			<div class="contact100-form-radio">
+				<input type="checkbox" id="dispatching" name="activity_type" value="dispatching">
+				<label class="label-input100" for="dispatching">
+					Dispatching
+				</label>
+			</div>
+			<div class="contact100-form-radio">
+				<input type="checkbox" id="returns" name="activity_type" value="returns">
+				<label class="label-input100" for="returns">
+					Returns
+				</label>
+			</div>
+			<div class="contact100-form-radio">
+				<input type="checkbox" id="value_added_activity" name="activity_type" value="value_added_activity">
+				<label class="label-input100" for="value_added_activity">
+					Value added activity
+				</label>
+			</div>
+		</div>
+
 				<div class="wrap-input100">
 					<span class="label-input100">9- Number of working shifts per day:</span><br/>
 					<table>
 					<tr>
-					<td><input class="input100" type="number" min="1" name="shifts" placeholder="" style="width:150px"></td>
+					<td><input value="{{form['shifts']}}" class="input100" type="number" min="1" name="shifts" placeholder="" style="width:150px"></td>
 					</tr>
 					</table>
 				</div>
 
-        <br/>
-				<div class="wrap-input100">
-					<span class="label-input100">10- Contact Information:</span><br/>
-					<table>
-					<tr>
-					<td><input class="input100" type="text" name="contact_name" placeholder="Name" style="height:100px width:200px"></td>
-					</tr>
-          <tr>
-					<td><input class="input100" type="text" name="contact_email" placeholder="Email" style="height:100px width:200px"></td>
-					</tr>
-          <tr>
-					<td><input class="input100" type="text" name="contact_phone" placeholder="Phone" style="height:100px width:200px"></td>
-					</tr>
-					</table>
+				<div class="wrap-input100 validate-input bg1" data-validate="Please Type Your Name">
+					<span class="label-input100">FULL NAME *</span>
+					<input value="{{form['contact_name']}}" class="input100" type="text" name="name" placeholder="Enter Your Name">
 				</div>
-
+				<div class="wrap-input100 validate-input bg1" data-validate="Please Type Your Email">
+					<span class="label-input100">Email *</span>
+					<input value="{{form['contact_email']}}" class="input100" type="text" name="name" placeholder="Enter Your Name">
+				</div>
+				<div class="wrap-input100 validate-input bg1" data-validate="Please Type Your Phone">
+					<span class="label-input100">Phone *</span>
+					<input  value="{{form['contact_phone']}}" class="input100" type="text" name="name" placeholder="Enter Your Name">
+				</div>
 				<div class="container-contact100-form-btn">
-					<div class="wrap-contact100-form-btn">
-						<div class="contact100-form-bgbtn"></div>
-						<input type="submit" value="Submit">
-					</div>
+					<button class="contact100-form-btn">
+						<span>
+							Show Recommendation
+							<i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
+						</span>
+					</button>
 				</div>
 			</form>
 		</div>
