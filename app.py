@@ -128,10 +128,11 @@ def totalcost():
             workers = request.form['workers']
             pallets = 0
             cartons = 0
-            if pallets in request.form:
+            if 'pallets' in request.form:
                 pallets = request.form['pallets']
-            if cartons in request.form:
+            if 'cartons' in request.form:
                 cartons = request.form['cartons']
+
             gate_readers = request.form['gate_readers']
             printers = request.form['printers']
 
@@ -142,7 +143,10 @@ def totalcost():
             gate_readers_cost = int(gate_readers) * 4100
             printers_cost = 3550 * int(printers)
             system_wh = 4230
-            tag_cost = (int(pallets) * 0.31) + (int(cartons) * 0.31)
+
+            tag_cost = (float(pallets) * 0.31) + (float(cartons) * 0.31)
+            print cartons,pallets
+            print tag_cost
             total_cost = tag_cost+ trucks_readers_cost + handheld_cost + gate_readers_cost + printers_cost +system_wh
         except Exception as e:
             print e
