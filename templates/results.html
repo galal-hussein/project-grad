@@ -45,17 +45,25 @@
 	    <tr>
 	      <td colspan="2" align="center"><img src="images/{{results['shape']}}.png"></td>
 	    </tr>
-	    <tr>
+			<tr>
+	      <th scope="row">Handling Equipmentes</th>
+				<td class="table-warning"><input value="{{results['trucks']}}" class="input100" type="number" min="1" name="trucks" style="height:15px"></td>
+	    </tr>
+			<tr>
 	      <th scope="row">space</th>
 	      <td><input type="hidden" name="space" value="{{results['space']}}">{{results['space']}}</td>
 	    </tr>
 			<tr>
-	      <th scope="row">Handling Equipmentes</th>
-				<td><input value="{{results['trucks']}}" class="input100" type="number" min="1" name="trucks" style="height:15px"></td>
+	      <th scope="row">Workers</th>
+					<td class="table-warning"><input value="{{results['workers']}}" class="input100" type="number" min="1" name="workers" style="height:15px"></td>
+	    </tr>
+			<tr>
+	      <th scope="row">Warehouse System Cost</th>
+	      <td><input type="hidden" name="wh_sys" value="{{results['wh_sys']}}">{{ results['wh_sys'] }}</td>
 	    </tr>
 			<tr>
 	      <th scope="row">Forklift readers</th>
-	      <td><input class="bg0 input100" type="number" min="1" name="trucks_readers" value="{{results['trucks_readers']}}"></td>
+	      <td class="table-warning"><input class="bg0 input100" type="number" min="1" name="trucks_readers" value="{{results['trucks_readers']}}"></td>
 	    </tr>
 			<tr>
 	      <th scope="row">Forklift Readers Cost</th>
@@ -63,29 +71,25 @@
 	    </tr>
 			<tr>
 	      <th scope="row">Handheld devices</th>
-	      <td><input class="input100" type="number" min="1" name="handhelds" value="{{results['handhelds']}}"></td>
+	      <td class="table-warning"><input class="input100" type="number" min="1" name="handhelds" value="{{results['handhelds']}}"></td>
 	    </tr>
 			<tr>
 	      <th scope="row">Handhelds Cost</th>
 	      <td><input type="hidden" name="handheld_cost" value="{{results['handheld_cost']}}">{{results['handheld_cost']}}</td>
 	    </tr>
 			<tr>
-	      <th scope="row">Workers</th>
-					<td><input value="{{results['workers']}}" class="input100" type="number" min="1" name="workers" style="height:15px"></td>
-	    </tr>
-			<tr>
 				{% if results['receive'] == "cartons" %}
 				<th scope="row">Cartons</th>
-				<td><input value="{{results['cartons']}}" class="input100" type="cartons" min="1" name="cartons" style="height:15px"></td>
+				<td class="table-warning"><input value="{{results['cartons']}}" class="input100" type="cartons" min="1" name="cartons" style="height:15px"></td>
 				{%endif%}
 				{% if results['receive'] == "pallets" %}
 				<th scope="row">Pallets</th>
-				<td><input value="{{results['pallets']}}" class="input100" type="pallets" min="1" name="pallets" style="height:15px"></td>
+				<td class="table-warning"><input value="{{results['pallets']}}" class="input100" type="pallets" min="1" name="pallets" style="height:15px"></td>
 				{%endif%}
 	    </tr>
 			<tr>
 	      <th scope="row">Gate Readers</th>
-				<td><input value="{{results['gate_readers']}}" class="input100" type="number" min="1" name="gate_readers" style="height:15px"></td>
+				<td class="table-warning"><input value="{{results['gate_readers']}}" class="input100" type="number" min="1" name="gate_readers" style="height:15px"></td>
 	    </tr>
 			<tr>
 	      <th scope="row">Gate Readers Cost</th>
@@ -93,15 +97,11 @@
 	    </tr>
 			<tr>
 	      <th scope="row">Printers</th>
-	      <td><input value="{{results['printers']}}" class="input100" type="number" min="1" name="printers" style="height:15px"></td>
+	      <td class="table-warning"><input value="{{results['printers']}}" class="input100" type="number" min="1" name="printers" style="height:15px"></td>
 	    </tr>
 			<tr>
 	      <th scope="row">Printers Cost</th>
 	      <td><input type="hidden" name="printers_cost" value="{{results['printers_cost']}}">{{ results['printers_cost'] }}</td>
-	    </tr>
-			<tr>
-	      <th scope="row">Warehouse System Cost</th>
-	      <td><input type="hidden" name="wh_sys" value="{{results['wh_sys']}}">{{ results['wh_sys'] }}</td>
 	    </tr>
 	  </tbody>
 	</table>
